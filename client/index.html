@@ -17,7 +17,7 @@
 <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
 <script>
-const socket = io(); // 🔥 هذا هو التعديل المهم
+const socket = io();
 
 function joinGame() {
   socket.emit("join");
@@ -41,34 +41,9 @@ socket.on("gameState", (state) => {
   let html = "<h3>Your Cards:</h3>";
 
   myHand.forEach(card => {
-    html += `
-      <button onclick="playCard('${card.id}')">
-        ${card.type} ${card.color}
-      </button>
-    `;
-  });
-
-  document.getElementById("hand").innerHTML = html;
-});
-
-function playCard(cardId) {
-  socket.emit("playCard", { cardId });
-}
-</script>
-
-</body>
-</html>    "Top Card: " + state.topCard.type + " " + state.topCard.color;
-
-  const myHand = state.hands[socket.id] || [];
-
-  let html = "<h3>Your Cards:</h3>";
-
-  myHand.forEach(card => {
-    html += `
-      <button onclick="playCard('${card.id}')">
-        ${card.type} ${card.color}
-      </button>
-    `;
+    html += "<button onclick=\"playCard('" + card.id + "')\">" +
+            card.type + " " + card.color +
+            "</button>";
   });
 
   document.getElementById("hand").innerHTML = html;

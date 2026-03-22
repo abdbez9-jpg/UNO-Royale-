@@ -13,7 +13,15 @@ const {
 const app = express();
 app.use(cors());
 app.use(express.json());
+const path = require('path');
 
+// ربط ملف الواجهة
+app.use(express.static(path.join(__dirname, '../client')));
+
+// عند الدخول للرابط الرئيسي يعرض index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/index.html'));
+});
 const server = http.createServer(app);
 
 const io = new Server(server, {

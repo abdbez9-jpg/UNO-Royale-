@@ -2,55 +2,93 @@
 <html>
 <head>
   <title>UNO Royale</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      height: 100vh;
+
+      /* الخلفية مثل التصميم */
+      background: linear-gradient(135deg, #3f51b5, #4caf50, #ff9800);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+
+    .btn {
+      display: block;
+      width: 250px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .single {
+      background: linear-gradient(to right, #2196f3, #4caf50);
+    }
+
+    .multi {
+      background: linear-gradient(to right, #ff5722, #ffc107);
+    }
+
+    .settings {
+      margin-top: 30px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+  </style>
+
 </head>
+
 <body>
 
-<h1>UNO Royale 🎮</h1>
+<div class="container">
+  <h1>UNO TRIBE</h1>
+  <p>Join the circle</p>
 
-<button onclick="joinGame()">Join Game</button>
-<button onclick="drawCard()">Draw Card</button>
+  <button class="btn single" onclick="singlePlayer()">
+    SINGLE PLAYER
+  </button>
 
-<div id="players"></div>
-<div id="hand"></div>
-<div id="topCard"></div>
+  <button class="btn multi" onclick="multiPlayer()">
+    MULTIPLAYER
+  </button>
 
-<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <div class="settings" onclick="openSettings()">⚙️</div>
+</div>
 
 <script>
-const socket = io();
-
-function joinGame() {
-  socket.emit("join");
+function singlePlayer() {
+  alert("Single Player coming soon!");
 }
 
-function drawCard() {
-  socket.emit("drawCard");
+function multiPlayer() {
+  alert("Multiplayer coming soon!");
 }
 
-socket.on("players", (players) => {
-  document.getElementById("players").innerText =
-    "Players: " + players.length;
-});
-
-socket.on("gameState", (state) => {
-  document.getElementById("topCard").innerText =
-    "Top Card: " + state.topCard.type + " " + state.topCard.color;
-
-  const myHand = state.hands[socket.id] || [];
-
-  let html = "<h3>Your Cards:</h3>";
-
-  myHand.forEach(card => {
-    html += "<button onclick=\"playCard('" + card.id + "')\">" +
-            card.type + " " + card.color +
-            "</button>";
-  });
-
-  document.getElementById("hand").innerHTML = html;
-});
-
-function playCard(cardId) {
-  socket.emit("playCard", { cardId });
+function openSettings() {
+  alert("Settings coming soon!");
 }
 </script>
 

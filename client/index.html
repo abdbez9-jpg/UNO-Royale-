@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UNO Royale</title>
+  <title>UNO TRIBE</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial;
       height: 100vh;
-
-      /* الخلفية مثل التصميم */
       background: linear-gradient(135deg, #3f51b5, #4caf50, #ff9800);
       display: flex;
       justify-content: center;
@@ -19,29 +17,29 @@
 
     .container {
       text-align: center;
+      transform: scale(1.3); /* تكبير */
     }
 
     h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
+      font-size: 55px;
     }
 
     p {
+      font-size: 18px;
       margin-bottom: 40px;
-      opacity: 0.8;
     }
 
     .btn {
       display: block;
-      width: 250px;
-      margin: 15px auto;
-      padding: 15px;
-      font-size: 18px;
+      width: 300px;
+      margin: 20px auto;
+      padding: 18px;
+      font-size: 20px;
       border: none;
-      border-radius: 30px;
-      cursor: pointer;
+      border-radius: 40px;
       color: white;
       font-weight: bold;
+      cursor: pointer;
     }
 
     .single {
@@ -53,12 +51,11 @@
     }
 
     .settings {
+      font-size: 30px;
       margin-top: 30px;
-      font-size: 25px;
       cursor: pointer;
     }
   </style>
-
 </head>
 
 <body>
@@ -67,28 +64,28 @@
   <h1>UNO TRIBE</h1>
   <p>Join the circle</p>
 
-  <button class="btn single" onclick="singlePlayer()">
+  <button class="btn single" onclick="goGame()">
     SINGLE PLAYER
   </button>
 
-  <button class="btn multi" onclick="multiPlayer()">
+  <button class="btn multi" onclick="goLobby()">
     MULTIPLAYER
   </button>
 
-  <div class="settings" onclick="openSettings()">⚙️</div>
+  <div class="settings" onclick="goSettings()">⚙️</div>
 </div>
 
 <script>
-function singlePlayer() {
-  alert("Single Player coming soon!");
+function goGame() {
+  window.location.href = "game.html";
 }
 
-function multiPlayer() {
-  alert("Multiplayer coming soon!");
+function goLobby() {
+  window.location.href = "lobby.html";
 }
 
-function openSettings() {
-  alert("Settings coming soon!");
+function goSettings() {
+  window.location.href = "settings.html";
 }
 </script>
 

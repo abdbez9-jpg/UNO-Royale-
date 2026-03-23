@@ -1,90 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNO Royale</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO Royale</title>
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="mobile-container">
-
-    <!-- الخلفية -->
-    <div class="blob red"></div>
-    <div class="blob blue"></div>
-    <div class="blob yellow"></div>
-    <div class="blob green"></div>
+<div class="game-viewport">
 
     <!-- 🏠 الشاشة الرئيسية -->
     <section id="home" class="screen active">
 
-        <header class="player-card">
-            <div class="avatar-placeholder"></div>
-            <div class="player-info">
-                <span class="player-name">اسم اللاعب</span>
+        <div class="player-card">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=UNO" class="avatar">
+            <div>
+                <div class="name">لاعب 1</div>
             </div>
-        </header>
+        </div>
 
-        <section class="logo-area">
-            <h1 class="uno-logo">UNO</h1>
-            <h2 class="royale-text">ROYALE</h2>
-        </section>
+        <h1 class="logo">UNO ROYALE</h1>
 
-        <main class="menu-buttons">
+        <div class="menu">
 
-            <button class="btn solo" onclick="go('single')">
-                🎯 اللعب الفردي
+            <button onclick="go('single')">
+                🎯 لعب فردي
             </button>
 
-            <button class="btn multiplayer" onclick="go('multi')">
-                🌐 اللعب الجماعي
+            <button onclick="go('multi')">
+                🌐 لعب جماعي
             </button>
 
-            <button class="btn friends" onclick="go('friends')">
+            <button onclick="go('friends')">
                 👥 الأصدقاء
             </button>
 
-        </main>
+            <button onclick="go('settings')">
+                ⚙️ الإعدادات
+            </button>
 
-        <footer class="bottom-nav">
-            <button class="glass-btn" onclick="go('profile')">الملف الشخصي</button>
-            <button class="glass-btn" onclick="go('settings')">الإعدادات</button>
-        </footer>
+        </div>
 
     </section>
 
-    <!-- باقي الشاشات -->
+    <!-- 🎯 لعب فردي -->
     <section id="single" class="screen">
+
         <button onclick="go('home')">⬅ رجوع</button>
-        <h2>اللعب الفردي</h2>
+
+        <h2 style="color:white; text-align:center; margin-top:20px;">
+            اللعب الفردي
+        </h2>
+
+        <button onclick="startGame()" style="margin-top:20px;">
+            ابدأ اللعبة
+        </button>
+
     </section>
 
+    <!-- 🌐 لعب جماعي -->
     <section id="multi" class="screen">
+
         <button onclick="go('home')">⬅ رجوع</button>
-        <h2>اللعب الجماعي</h2>
+
+        <h2 style="color:white; text-align:center; margin-top:20px;">
+            اللعب الجماعي
+        </h2>
+
     </section>
 
+    <!-- 👥 الأصدقاء -->
     <section id="friends" class="screen">
+
         <button onclick="go('home')">⬅ رجوع</button>
-        <h2>الأصدقاء</h2>
+
+        <h2 style="color:white; text-align:center; margin-top:20px;">
+            الأصدقاء
+        </h2>
+
     </section>
 
-    <section id="profile" class="screen">
-        <button onclick="go('home')">⬅ رجوع</button>
-        <h2>الملف الشخصي</h2>
-    </section>
-
+    <!-- ⚙️ الإعدادات -->
     <section id="settings" class="screen">
+
         <button onclick="go('home')">⬅ رجوع</button>
-        <h2>الإعدادات</h2>
+
+        <h2 style="color:white; text-align:center; margin-top:20px;">
+            الإعدادات
+        </h2>
+
     </section>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>

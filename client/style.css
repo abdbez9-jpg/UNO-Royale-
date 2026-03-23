@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #050a18;
-    --glass: rgba(255, 255, 255, 0.1);
-    --red: #ff3b3b;
-    --blue: #0084ff;
-    --yellow: #ffcc00;
-    --green: #2ecc71;
+    --bg-dark: #050a18;
+    --uno-red: #ff1f44;
+    --uno-blue: #0084ff;
+    --uno-yellow: #ffcc00;
+    --uno-green: #2ecc71;
+    --glass: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -15,74 +15,61 @@
 }
 
 body {
-    background-color: #111;
+    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 /* الحاوية */
-.mobile-container {
+.phone-screen {
     width: 375px;
     height: 740px;
-    background: var(--bg-color);
+    background: var(--bg-dark);
+    border-radius: 45px;
     position: relative;
     overflow: hidden;
-    border-radius: 40px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    border: 6px solid #1a1a1a;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 
-/* الخلفية الملونة */
+/* الخلفيات */
 .blob {
     position: absolute;
-    width: 150px;
-    height: 150px;
-    filter: blur(60px);
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    z-index: 0;
+    filter: blur(70px);
     opacity: 0.4;
 }
 
-.red { top: 10%; left: -20px; background: var(--red); }
-.blue { top: 40%; right: -30px; background: var(--blue); }
-.yellow { bottom: 10%; left: 0; background: var(--yellow); }
-.green { top: 70%; right: 10px; background: var(--green); }
+.b-red { top: -50px; left: -50px; background: var(--uno-red); }
+.b-blue { top: 200px; right: -80px; background: var(--uno-blue); }
+.b-green { bottom: 50px; right: -50px; background: var(--uno-green); }
+.b-yellow { bottom: -20px; left: -20px; background: var(--uno-yellow); }
 
-/* الشاشات */
-.screen {
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    z-index: 1;
-}
-
-.screen.active {
-    display: flex;
-}
-
-/* بطاقة اللاعب */
-.player-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
+/* شريط اللاعب */
+.player-bar {
+    margin: 30px 20px;
     padding: 10px 15px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
     border-radius: 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    z-index: 1;
+    z-index: 2;
 }
 
-.avatar-placeholder {
+.avatar {
     width: 45px;
     height: 45px;
-    background: #444;
     border-radius: 50%;
+    background: #222;
     border: 2px solid white;
+    margin-left: 15px;
 }
 
 .player-name {
@@ -91,84 +78,79 @@ body {
 }
 
 /* الشعار */
-.logo-area {
+.logo-container {
     text-align: center;
-    margin-top: 60px;
-    z-index: 1;
+    margin-top: 40px;
+    z-index: 2;
 }
 
-.uno-logo {
-    font-size: 80px;
-    color: var(--red);
-    font-style: italic;
+.uno-text {
+    font-size: 90px;
     font-weight: 900;
-    text-shadow: 0 0 20px var(--red);
-    line-height: 0.8;
+    color: white;
+    font-style: italic;
+    text-shadow: 0 0 20px #ff1f44;
 }
 
 .royale-text {
     color: white;
-    letter-spacing: 5px;
-    font-size: 18px;
-    margin-top: 5px;
+    letter-spacing: 8px;
+    font-size: 22px;
 }
 
 /* الأزرار */
-.menu-buttons {
+.menu {
     margin-top: auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    z-index: 1;
+    z-index: 2;
 }
 
-.btn {
-    padding: 18px;
+.main-btn {
+    height: 65px;
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 8px 0 rgba(0,0,0,0.2);
-    transition: all 0.2s ease;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    filter: brightness(1.2);
-}
-
-.btn:active {
-    transform: scale(0.95);
-}
-
-/* تدرجات الأزرار */
-.solo { background: linear-gradient(to bottom, #ff5f5f, #d40000); }
-.multiplayer { background: linear-gradient(to bottom, #4facfe, #004e92); }
-.friends { background: linear-gradient(to bottom, #f6d365, #fda085); }
-
-/* الأزرار السفلية */
-.bottom-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    gap: 10px;
-    z-index: 1;
-}
-
-.glass-btn {
-    flex: 1;
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-    padding: 10px;
-    border-radius: 12px;
-    font-size: 14px;
-    cursor: pointer;
     transition: 0.2s;
 }
 
-.glass-btn:hover {
-    background: rgba(255,255,255,0.2);
-    }
+.main-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+
+.btn-red {
+    background: linear-gradient(180deg, #ff4d4d, #b30000);
+}
+
+.btn-blue {
+    background: linear-gradient(180deg, #33a1ff, #0056b3);
+}
+
+.btn-yellow {
+    background: linear-gradient(180deg, #ffdb4d, #b38f00);
+}
+
+/* الأزرار السفلية */
+.footer {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.small-btn {
+    flex: 1;
+    padding: 12px;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 15px;
+}

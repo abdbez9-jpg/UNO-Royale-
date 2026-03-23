@@ -1,66 +1,174 @@
-body {
-    margin: 0;
-    background: black;
-    font-family: Arial;
-    display: flex;
-    justify-content: center;
+:root {
+    --bg-color: #050a18;
+    --glass: rgba(255, 255, 255, 0.1);
+    --red: #ff3b3b;
+    --blue: #0084ff;
+    --yellow: #ffcc00;
+    --green: #2ecc71;
 }
 
-.game-viewport {
-    width: 360px;
-    height: 640px;
-    background: #111;
-    border-radius: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* الحاوية */
+.mobile-container {
+    width: 375px;
+    height: 740px;
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
+
+/* الخلفية الملونة */
+.blob {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    filter: blur(60px);
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.red { top: 10%; left: -20px; background: var(--red); }
+.blue { top: 40%; right: -30px; background: var(--blue); }
+.yellow { bottom: 10%; left: 0; background: var(--yellow); }
+.green { top: 70%; right: 10px; background: var(--green); }
 
 /* الشاشات */
 .screen {
     display: none;
+    flex-direction: column;
+    height: 100%;
+    z-index: 1;
 }
 
 .screen.active {
-    display: block;
-}
-
-/* اللاعب */
-.player-card {
     display: flex;
-    gap: 10px;
+}
+
+/* بطاقة اللاعب */
+.player-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    border-radius: 20px;
+    display: flex;
     align-items: center;
+    gap: 15px;
+    z-index: 1;
 }
 
-.avatar {
-    width: 40px;
+.avatar-placeholder {
+    width: 45px;
+    height: 45px;
+    background: #444;
     border-radius: 50%;
+    border: 2px solid white;
 }
 
-.name {
+.player-name {
     color: white;
+    font-weight: bold;
 }
 
-.level {
-    color: gray;
-    font-size: 12px;
-}
-
-/* العنوان */
-.logo {
+/* الشعار */
+.logo-area {
     text-align: center;
-    color: red;
+    margin-top: 60px;
+    z-index: 1;
+}
+
+.uno-logo {
+    font-size: 80px;
+    color: var(--red);
+    font-style: italic;
+    font-weight: 900;
+    text-shadow: 0 0 20px var(--red);
+    line-height: 0.8;
+}
+
+.royale-text {
+    color: white;
+    letter-spacing: 5px;
+    font-size: 18px;
+    margin-top: 5px;
 }
 
 /* الأزرار */
-.menu {
-    margin-top: 30px;
+.menu-buttons {
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    z-index: 1;
 }
 
-button {
-    padding: 10px;
+.btn {
+    padding: 18px;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
 }
+
+.btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* تدرجات الأزرار */
+.solo { background: linear-gradient(to bottom, #ff5f5f, #d40000); }
+.multiplayer { background: linear-gradient(to bottom, #4facfe, #004e92); }
+.friends { background: linear-gradient(to bottom, #f6d365, #fda085); }
+
+/* الأزرار السفلية */
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 10px;
+    z-index: 1;
+}
+
+.glass-btn {
+    flex: 1;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.glass-btn:hover {
+    background: rgba(255,255,255,0.2);
+    }
